@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+    color: #fff;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    direction: rtl;
+}
+
+.container{
+    position: relative;
+    width: 850px;
+    height: 650px;
+    border: 2px solid #4a9eff;
+    box-shadow: 0 0 25px #4a9eff;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.container .form-box{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-box.Login{
+    left: 0;
+    padding: 0 40px;
+}
+
+.form-box.Login .animation{
+    transform: translateX(0%);
+    transition: .7s;
+    opacity: 1;
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.Login .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    transition-delay: calc(.1s * var(--D));
+}
+
+.form-box.Register{
+    right: 0;
+    padding: 0 40px;
+}
+
+.form-box.Register .animation{
+    transform: translateX(120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.Register .animation{
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0px);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.form-box.ForgotPassword{
+    right: 0;
+    padding: 0 40px;
+}
+
+.form-box.ForgotPassword .animation{
+    transform: translateX(120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.ForgotPassword .animation{
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0px);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.form-box h2{
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.form-box .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+}
+
+/* عرض خط زیر نام کاربری 90% */
+.form-box.Register .input-box:nth-child(1) input {
+    width: 90%;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    border-bottom: 2px solid #fff;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: right;
+    direction: rtl;
+    transition: .5s;
+}
+
+.input-box input:focus,
+.input-box input:valid{
+    border-bottom: 2px solid #4a9eff;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #fff;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+    top: -5px;
+    color: #4a9eff;
+}
+
+/* متن راهنما به صورت placeholder با فاصله بیشتر */
+.input-box input.email-field::placeholder {
+    color: #ff6b6b;
+    font-size: 12px;
+    padding-right: 30px;
+}
+
+.input-box input.email-field:focus::placeholder {
+    color: transparent;
+}
+
+.btn{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid #4a9eff;
+    overflow: hidden;
+    z-index: 1;
+    margin: 20px 0 10px;
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    height: 300%;
+    width: 100%;
+    background: linear-gradient(#1a1a2e, #4a9eff, #1a1a2e, #4a9eff);
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover:before{
+    top: 0;
+}
+
+.regi-link{
+    font-size: 13px;
+    text-align: center;
+    margin: 15px 0 5px;
+}
+
+.regi-link a{
+    text-decoration: none;
+    color: #4a9eff;
+    font-weight: 600;
+}
+
+.regi-link a:hover{
+    text-decoration: underline;
+}
+
+.info-content{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-content.Login{
+    right: 0;
+    text-align: right;
+    padding: 0 40px 40px 150px;
+}
+
+.info-content.Login .animation{
+    transform: translateX(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--S));
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.container.active .info-content.Login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--D));
+}
+
+.info-content.Register{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 40px 40px;
+}
+
+.info-content.Register .animation{
+    transform: translateX(-120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10PX);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .info-content.Register .animation{
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.info-content.ForgotPassword{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 40px 40px;
+}
+
+.info-content.ForgotPassword .animation{
+    transform: translateX(-120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10PX);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .info-content.ForgotPassword .animation{
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--li));
+}
+
+/* --- ✨ بخش اصلاح شده 1 --- */
+.container .curved-shape{
+    position: absolute;
+    right: 0;
+    top: -5px;
+    height: 700px;
+    width: 900px;
+    background: linear-gradient(45deg, #1a1a2e, #4a9eff);
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    transition: 1.5s ease;
+    /* transition-delay: 1.6s;  <-- این خط حذف شد */
+}
+
+.container.active .curved-shape{
+    transform: rotate(0deg) skewY(0deg);
+    transition-delay: .5s; /* <-- این تأخیر فقط در زمان فعال شدن اعمال می‌شود */
+}
+
+/* --- ✨ بخش اصلاح شده 2 --- */
+.container .curved-shape2{
+    position: absolute;
+    left: 250px;
+    top: 100%;
+    height: 800px;
+    width: 900px;
+    background: #1a1a2e;
+    border-top: 3px solid #4a9eff;
+    transform: rotate(0deg) skewY(0deg);
+    transform-origin: bottom left;
+    transition: 1.5s ease;
+    /* transition-delay: .5s;  <-- این خط حذف شد */
+}
+
+.container.active .curved-shape2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s; /* <-- این تأخیر فقط در زمان فعال شدن اعمال می‌شود */
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 15px;
+    background: rgba(255,107,107,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,107,107,0.3);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.success-message {
+    color: #51cf66;
+    text-align: center;
+    margin-bottom: 15px;
+    background: rgba(81,207,102,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(81,207,102,0.3);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* استایل‌های اضافی برای مدیریت نمایش فرم‌ها */
+.container .form-box.Register,
+.container .info-content.Register,
+.container .form-box.ForgotPassword,
+.container .info-content.ForgotPassword {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container.active .form-box.Register,
+.container.active .info-content.Register {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.container.active.forgot-password-active .form-box.ForgotPassword,
+.container.active.forgot-password-active .info-content.ForgotPassword {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.container.active.forgot-password-active .form-box.Register,
+.container.active.forgot-password-active .info-content.Register {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container.active .form-box.ForgotPassword,
+.container.active .info-content.ForgotPassword {
+    opacity: 0;
+    pointer-events: none;
+}
